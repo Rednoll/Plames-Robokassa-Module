@@ -1,13 +1,18 @@
 package com.inwaiders.plames.modules.robokassa;
 
+import com.inwaiders.plames.domain.module.impl.ModuleBase;
 import com.inwaiders.plames.modules.paygate.domain.billing.gateway.PaymentGatewayHlRepository;
 import com.inwaiders.plames.modules.robokassa.domain.RobokassaGateway;
-import com.inwaiders.plames.modules.webcontroller.domain.module.WebDescribedModuleBase;
+import com.inwaiders.plames.modules.webcontroller.domain.module.BaseWebDescription;
+import com.inwaiders.plames.modules.webcontroller.domain.module.WebDescribedModule;
+import com.inwaiders.plames.modules.webcontroller.domain.module.WebDescription;
 import com.inwaiders.plames.modules.webcontroller.domain.module.button.Button;
 
-public class RobokassaModule extends WebDescribedModuleBase {
+public class RobokassaModule extends ModuleBase implements WebDescribedModule {
 
 	private static RobokassaModule instance = new RobokassaModule();
+	
+	private BaseWebDescription webDescription = new BaseWebDescription();
 	
 	private RobokassaModule() {
 		
@@ -18,7 +23,7 @@ public class RobokassaModule extends WebDescribedModuleBase {
 			button.setBordersColor("#9EBFD8");
 			button.setTargetPage("/robokassa/paygates");
 
-		this.buttons.add(button);
+		webDescription.addButton(button);
 	}
 	
 	@Override
@@ -75,6 +80,11 @@ public class RobokassaModule extends WebDescribedModuleBase {
 		return 8765236974L;
 	}
 
+	public WebDescription getWebDescription() {
+		
+		return this.webDescription;
+	}
+	
 	public static RobokassaModule getInstance() {
 		
 		return instance;

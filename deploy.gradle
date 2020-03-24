@@ -36,7 +36,9 @@ dependencies {
 	compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.10'
 	
 	compile project(':Plames-API')
+    compile project(':Plames-Core')
 	compile project(':Plames-PaymentGateway-API')
+	compile project(':Plames-PaymentGateway-Base')
 	compile project(':Plames-Web-Control-API')
 }
 
